@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Intro to Object-Oriented Web Development</title>
+
+		<meta name="description" content="Intro to Object-Oriented Web Development - A GirlDevelopIT">
+		<meta name="author" content="Diane O'Connell">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/gdiCustom.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<!-- light editor<link rel="stylesheet" href="lib/css/light.css">-->
+		<!-- dark editor--><link rel="stylesheet" href="lib/css/dark.css">
+
+		<!-- If use the PDF print sheet so students can print slides-->
+		
+		<link rel="stylesheet" href="css/print/pdf.css" type="text/css" media="print">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+        <!-- Opening -->
+				<section>
+			      <h1>Welcome!</h1>
+			      <h2>Welcome to GirlDevelopIt</h2>
+			      <h3>Intro to ASP.NET Web Services</h3>
+			    </section>
+
+			    <section>
+    				<h2>The World Wide Web </h2>
+    				<ul class="imgWrap">
+			     		<li>A public client/server network</li>
+			        	<li>Web browser<ul>
+						    <li>the client</li><li>makes HTTP "Requests"</li>
+						  </ul></li>
+			        	<li>HTTP - Hypertext Transfer Protocol<ul>
+						    <li>protocols define communication rules</li>
+						    <li>HTTP verbs and status codes</li>
+						  </ul>
+						</li>
+			        	<li>Web server<ul>
+						    <li>serves files in a "Response"</li>
+						  </ul> 
+						</li>
+			      	</ul>
+			    	<img src="images/client-server-illustration.gif" alt="Client/server" style="float:right"/>
+			    </section>
+        		<section>
+		        	<h2>2-tier or  3-tier architecture</h2>
+					<ul class="imgWrap">
+						<li>Data layer</li>
+						<li>Business logic layer
+						  <ul>
+						    <li>Traditionally server languages</li>
+						    <li>Java, C# (ASP.NET), Python, Ruby, PHP</li>
+						  </ul>
+						</li>
+						<li>Presentation layer
+						  <ul>
+						    <li>Languages interpreted by the client </li>
+						    <li>HTML, CSS, Javascript</li> 
+						  </ul>
+						</li>
+					</ul>
+					<img src="images/3tier.jpg" alt="Three/two tier architecture" style="float:right"/>
+			    </section>
+			    <section>
+					<h2>Data layer - part of back-end</h2>
+					<h4>Relational database servers</h4>
+					<ul>
+						<li>MS SQL, MySQL, Postgres SQL</li>
+						<li>Data Relationships are defined and enforced by the database</li> 
+						<li>A "Company" table has a one-to-many relationship with an "Employees" table</li> 
+					</ul>
+				</section>
+				<section>
+					<h2>Data layer - part of back-end</h2>
+					<h4>Non-relational database servers</h4>
+					<ul>
+						<li>MongoDB, RavenDB</li>
+						<li>Relationships (if any) are typically defined in the business logic layer</li> 
+						<li>Popular with "Big Data" applications - data can be stored in a less structured way</li> 
+					</ul>
+				</section>
+				<section>
+					<h2>Data layer - part of back-end</h3>
+					<h4>Data can also be stored in structured "flat files"</h4>
+					<ul>
+						<li>XML (Extensible Markup Language)
+							<ul><li>HTML is in fact XML that is interpreted by the browser</li></ul>
+						</li>
+						<li>CSV (comma-separated value) files</li> 
+						<li>JSON (Javascript Object Notation) files</li> 
+					</ul>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Business logic layer</h2>
+					<h3>The web server</h3>
+					<p>A typical full-page <strong>request</strong>:</p>
+					<ul>
+						<li>User clicks a link or types a URL</li>
+						<li>Browser sends the HTTP Request for a web page</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Business logic layer</h2>
+					<h3>The web server</h3>
+					<ul><li><strong>URL</strong>: Uniform Resource Locator<br/>
+							<span class="term">The unique address of a file on the internet</span>
+							<span><img src="./images/URL parts.png" style="max-height:350px" alt=""></span>
+						</li>
+					</ul>
+				</section>
+				<section>
+                    <h2>Business logic layer</h2>
+					<h3>The web server</h3>
+                    <div style="width: 55%; margin:10px 2% 0 0; float: left; text-align: left;">
+                        <p><strong>IP Address</strong>: Internet Protocol Address - <span class="term">A unique address for a computer.</span><br/><br/></p>
+                        <p><strong>DNS</strong>: Domain Name Service - <br/><span class="term">Associates domain names with web server IP addresses</span></p>
+                    </div>
+                    <div style="width: 43%; margin:10px 0 0 0; float: left; text-align: left;">
+                        <img src="./images/IP_DNS.gif" alt="">
+                    </div>
+                </section>
+				<section>
+					<h2>Business logic layer</h2>
+					<h3>The web server</h3>
+					<p>A typical full-page <strong>response</strong>:</p>
+					<ul>
+						<li>Web server listens for incoming HTTP Requests</li> 
+						<li>Binds the subdomain and domain: 
+							<ul>
+								<li>to a folder on the computer and retrieves a static HTML file from the file path of the URL</li>
+								<li>or to a web application running on the web server</li>
+							</ul>
+						</li>
+						<li>A "back-end" programming language performs logical operations:
+							<ul>
+								<li>Runs database queries to retrieve content data</li> 
+								<li>Constructs the HTML file by combining tags and content data</li> 
+							</ul>
+						</li>
+        				<li>Returns the HTML file and dependency files in the HTTP Response</li> 
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Business logic layer</h2>
+					<p>A partial page load:</p>
+					<ul>
+						<li>An HTTP request comes in from a Javascript event handler</li> 
+						<li>This is called an "AJAX" request</li>
+        				<li>AJAX - Asynchronous Javascript and XML</li> 
+        				<li>The HTTP Response returns information to the Javascript</li> 
+					</ul>
+				</section>
+				
+				<section>
+					<h2>HTTP and Object Data Wrappers</h2>
+					<ul>
+						<li>Wrappers provide a way to "describe" an object as text.</li>
+						<li>Sent in the HTTP Request or Response "payload"</li>
+						<li>Wrapped text is then parsed into an object in memory</li>
+						<li>SOAP-XML</li>
+						<li>JSON (JavaScript Object Notation)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Web Services - what does Restful mean?</h2>
+					<ul>
+						<li>REST (Representational state transfer) is a web service "architectural style"</li>
+						<li>A RESTful web service API:
+							<ul>
+								<li>Uses "domain" objects (think of nouns)</li>
+							    <li>i.e. Calendar, Event</li>
+								<li>Uses HTTP verbs for the actions</li>
+								<li>i.e. GET, POST, PUT, DELETE</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>ASP.NET Web Services Technologies</h2>
+					<ul>
+						<li>Web Services
+							<ul><li>myService.asmx</li></ul></li>
+						<li>WCF Services
+							<ul>
+								<li>Windows Communication Foundation</li>
+								<li>myService.svc</li></ul></li>
+						<li>ASP.Net Web API</li>
+
+
+				</section>
+				
+				<section>
+					  <h2>ASP.NET Web API</h2>
+					  <ul>
+						<li>ASP.NET 4 or higher (particularly MVC)</li>
+						<li>Only transfers messages over HTTP protocol</li>
+						<li>Microsoft intends this to be the HTTP services standard for ASP.NET going forward</li>
+						<li>Resources:
+							<ul>
+							<li>Video: <a href="http://pluralsight.com/training/Courses/TableOfContents/aspnetwebapi" target="_window">http://pluralsight.com/training/Courses/TableOfContents/aspnetwebapi</a></li>
+							<li><a href="http://weblogs.asp.net/scottgu/archive/2012/02/23/asp-net-web-api-part-1.aspx" target="_window">http://weblogs.asp.net/scottgu/archive/2012/02/23/asp-net-web-api-part-1.aspx</a></li></ul></li>
+					</ul>
+				</section>
+
+				<section>
+					  <h2>Web Clients</h2>
+					  <ul>
+						<li>Clients are not always browsers</li>
+						<li>Applications that run on a web server can act as a client and call web service APIs on another web server.</li>
+						<li>For example:
+							<ul>
+							<li>FitBit APIs: <a href="https://wiki.fitbit.com/display/API/API+Client+Libraries" target="_window">https://wiki.fitbit.com/display/API/API+Client+Libraries</a></li></ul></li>
+					</ul>
+				</section>
+
+				<section>
+					  <h2>Microsoft's Web Platform Installer</h2>
+						<p>In a web browser, enter the URL to download Microsoft's Web Platform Installer, 
+							<a href="http://www.microsoft.com/web/downloads/platform.aspx" target="_window">http://www.microsoft.com/web/downloads/platform.aspx</a></p>
+						<ul>
+							<li>Search for "Visual Studio Express 2013 for Web"</li> 
+							<li>Select "Visual Studio Express 2013 for Web with Microsoft Azure SDK - 2.4" released on 8/4/2014</li> 
+							<li>Click Install</li>
+						</ul>
+				</section>
+
+				<section>
+					  <h2>Installation of Fiddler 2</h2>
+						<p>Fiddler 2 will allow us to call our API, and view the raw HTTP Request and raw HTTP Response, before we build our client application.</p> 
+						<ul>
+							<li>Installer will download automatically</li>
+							<li><a href="http://www.telerik.com/download/fiddler/fiddler2" target="_window">http://www.telerik.com/download/fiddler/fiddler2</a></li>
+							<li>Double-click the installer to install</li>
+						</ul>
+				</section>
+
+				<section>
+					  <h2>Web Service API - Project Setup</h2>
+						<ul>
+							<li>Launch "VS Express 2013 for Web"</li>
+							<li>Select "New Project..."</li>
+							<li>"Empty" vs. "Single Page Application" templates</li>
+							<li>"Single Page Application" installs a skeleton SPA built on Knockout.js. It supports login using a membership database or external authentication provider.</li>
+						</ul>
+				</section>
+
+				<section>
+					  <h2>Web Service API - Project Setup</h2>
+						<ul>
+							<li>Select "Empty" template and check off "Web API"</li>
+							<li>Uncheck  "Host in the Cloud"</li>
+							<li>If interested, more about Azure cloud hosting:
+								<ul>
+								<li><a href="http://azure.microsoft.com/en-us/develop/net/" target="_window">http://azure.microsoft.com/en-us/develop/net/</a></li></ul></li>
+						</ul>
+				</section>
+				<section>
+					  <h2>Visual Studio Express Overview</h2>
+						<ul>
+							<li>Left-side:
+								<ul>
+								<li>Text Editor</li>
+								<li>Toolbox</li></ul></li>
+							<li>Right-side:
+								<ul>
+								<li>Solution Explorer</li>
+								<li>Server Explorer</li></ul></li>
+							<li>Solution file</li>
+							<li>Project file - can be more than one</li>
+							<li>web.config</li>
+						</ul>
+				</section>
+
+				<!--
+				SLIDE - ASP.NET Web API Routes
+
+					* Global.asax
+					* App_Start -> WebApiConfig
+
+					// Web API routes
+					config.MapHttpAttributeRoutes();
+
+					config.Routes.MapHttpRoute(
+					     name: "DefaultApi",
+					     routeTemplate: "api/{controller}/{id}",
+					     defaults: new { id = RouteParameter.Optional }
+
+					);
+
+				SLIDE - Creating Data Models
+
+					* "Code First" - Generate the business objects in code first
+					* POCO - a data/domain/business model
+					* "Plain Old C# Object" or "Plain Old CLR Object"
+					* 
+						* http://stackoverflow.com/questions/2672409/what-is-entity-framework-with-poco 
+
+					* We will generate db tables using Entity Framework
+					* Entity Framework - an ORM (Object Relationship Mapping) toolset
+
+				SLIDE - "POCO" class for an Event
+
+					1. In Visual Studio's Solution Explorer, right-click on the Models folder and select Add > Class...
+					2. Name the Class file "Event"
+					3. Add public properties:
+
+				    public class Event
+				    {
+				        public int? Id { get; set; }
+				        public string Title { get; set; }
+				        public DateTime StartDttm { get; set; }
+				        public DateTime EndDttm { get; set; }
+				        public bool AllDay { get; set; }
+				        public string Description { get; set; }
+				    }
+
+				SLIDE - Add Web API scaffold with Entity Framework
+					In Visual Studio's Solution Explorer, right-click on the Controllers folder
+
+					1. From Visual Studio's Debug menu, select "Build EventCalendar" 
+					2. After a successful build runs, click Add > New Scaffold Item
+					3. Select, "Web API Controller with Actions, using Entity Framework"
+
+						a. select our Event model class
+						b. select + symbol to add a new data context
+						c. Name matters - URLs for the REST API are based on the controller name
+
+				SLIDE - What Changes Happened to the Project?
+				Changed files:
+					/EventCalendar/packages.config
+					/EventCalendar/Web.config
+
+					New files:
+					/packages/ (new Entity Framework nuget packages)
+					/EventCalendar/Controllers/EventsController.cs
+					     - a new controller class with RESTful CRUD methods
+					/EventCalendar/Models/EventCalendarContext.cs
+
+				SLIDE - EventsController - Get All Events
+
+					// GET: api/Events
+					public IQueryable<Event > GetEvents()
+					{
+					    return db.Events;
+					}
+
+					* No error handling out of the box. we will add that later.
+					Change to:
+
+					public IQueryable <Event > GetEvents()
+					{
+					if (db.Events != null && db.Events.Any<Event>())
+					                return db.Events;
+
+					            return new List< Event>().AsQueryable();
+					}
+
+				SLIDE - 
+					IIS runs each web application in an application pool. 
+
+					We will have a client that is just an HTML file with some JQuery.
+
+					HTML (.html) files and JQuery (which is a Javascript library are sent to the browser in the Response and interpreted by the client browser, not executed on the server. 
+
+					Thus we need to set the full URL to our Web API application running on the IIS Express web server:
+					http://localhost:50456/api/Events 
+
+					Try it in Fiddler 2!
+				
+				SLIDE - Cross-Origin Request Error
+
+					"No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access."
+
+					http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api
+
+
+				SLIDE - Fixing Cross-Origin Request Error
+
+					In VS, Select Project -> Manage NuGet Packages 
+
+					Search on CORS and install the package
+					public static class WebApiConfig
+					    {
+					        public static void Register( HttpConfiguration config)
+					        {
+					            // Web API configuration and services
+					            var cors = new System.Web.Http.Cors.EnableCorsAttribute ("*" , "*" , "*" );
+					            config.EnableCors(cors);
+
+			-->
+								
+			</div>
+  		<footer>
+        <div class="copyright">
+          Build a Web Service API Using ASP.NET -- GDI Boston --
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a>
+        </div>
+      </footer>
+		</div>
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
